@@ -34,7 +34,6 @@
             </v-list>    
         </v-navigation-drawer>
         <v-app-bar
-            absolute
             color="teal lighten-2"
             elevate-on-scroll
             dark
@@ -43,7 +42,7 @@
                 @click.stop="drawer = !drawer"
             ></v-app-bar-nav-icon><v-spacer></v-spacer>
             <v-toolbar-title class= "font-weight-bold">{{ appTitle }}</v-toolbar-title>                
-            <v-spacer flat></v-spacer>
+            <v-spacer></v-spacer>
             <v-btn 
                 flat
                 color="teal darken-3"

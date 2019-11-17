@@ -2,18 +2,20 @@
     <v-app>
         <app-navigation></app-navigation>
         <v-content>
-            <span></span>
+            <landing-page></landing-page>
         </v-content>
     </v-app>    
 </template>
 
 <script>
 import AppNavigation from '@/components/AppNavigation';
+import LandingPage from '@/components/LandingPage'
 
 export default {
     name: 'landing',
     components: {
-        AppNavigation
+        AppNavigation,
+        LandingPage
     }    
 };
 </script>
