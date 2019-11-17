@@ -1,6 +1,7 @@
 <template>
     <v-app>
-        <app-navigation></app-navigation>
+        <app-navigation>
+        </app-navigation>
         <v-content>
             <landing-page></landing-page>
         </v-content>

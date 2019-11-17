@@ -1,63 +1,105 @@
 <template>
     <v-container fluid fill-height>
-        <v-row dense
-            justify="space-between"
-        >
-            <v-col  
-                cols= "12"
-                md= "2"
+        <v-layout justify-center column pa-5>
+        <v-container fluid>
+            <v-row
+                justify="space-between"
             >
-
-            </v-col>
-            <v-col  
-                cols= "12"
-                md= "9"
-            >
-                <v-row 
-                    v-for= "(item,i) in kostList"
-                    :key= "i"
-                    justify="space-between" 
-                    style= "flex-wrap: nowrap;"
-                >   
-                    <v-col
-                        cols= "7"
-                        class= "flex-grow-1 flex-shrink-0"
+                <v-col
+                    cols= "12"
+                    md= "5"
+                    class="flex-grow-1 flex-shrink-0"
+                >
+                    <h1>Selamat Datang! </h1>
+                    <p>Temukan informasi kost yang paling cocok untuk Anda di area Jakarta ini!</p>
+                    <v-spacer></v-spacer>
+                    <v-card
+                        class="mx-auto"   
                     >
-                        <v-card
-                            class="mx-auto ma-3"
-                            max-width="1000"
-                            max-height="600"
-                            color="teal lighten-4"
-                            raised
-                            tile                
+                        <v-img
+                            class="white--text align-end"
+                            height="200px"
+                            src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
                         >
-                            <div class="d-flex flex-no-wrap justify-space-between">
-                                <div>
-                                    <v-card-title
-                                        class= "headline"
-                                        v-text= "item.nama"
-                                    ></v-card-title>
+                            <v-card-title>Ingin mengiklankan kos Anda?</v-card-title>
+                        </v-img>
 
-                                    <v-card-subtitle v-text= "item.harga"></v-card-subtitle>
+                        <v-card-subtitle class="pb-0">Copyright 2019</v-card-subtitle>
 
-                                    <v-card-actions>
-                                        <v-btn text>Details</v-btn>
-                                    </v-card-actions>
-                                </div>
+                        <v-card-text class="text--primary">
+                            <div>Login ke akun InfoKostMu Sekarang!</div>
+                            <div>Tambahkan, Sesuaikan, dan Update Informasi Kost yang kamu iklankan!</div>
+                        </v-card-text>
 
-                                <v-avatar
-                                    class= "ma-3"    
-                                    size= "125"
-                                    tile
+                        <v-card-actions>
+                            <v-btn
+                                color="orange"
+                                text
+                            >
+                                login
+                            </v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-col>
+                <v-spacer></v-spacer>
+                <v-col
+                    cols="12"
+                    md="6"
+                >
+                    <v-container fluid>
+                        <v-row 
+                            v-for= "(item,i) in kostList"
+                            :key= "i"
+                            justify="space-between" 
+                            style= "flex-wrap: nowrap;"
+                        >   
+                            <v-col
+                                cols= "11"
+                                class= "flex-grow-1 flex-shrink-0"
+                            >
+                                <v-card
+                                    class="mx-auto ma-2"
+                                    max-width="1000"
+                                    max-height="600"
+                                    raised
+                                    tile                
                                 >
-                                    <v-img :src= "item.gambar"></v-img>
-                                </v-avatar>
-                            </div>
-                        </v-card>
-                    </v-col>    
-                </v-row>
-            </v-col>
-        </v-row>
+                                    <div class="d-flex flex-no-wrap justify-space-between">
+                                        <div>
+                                            <v-card-title
+                                                class= "headline"
+                                                v-text= "item.nama"
+                                            ></v-card-title>
+
+                                            <v-card-subtitle 
+                                                v-text= "item.harga"
+                                                class= "font-weight-medium"
+                                            ></v-card-subtitle>
+
+                                            <v-card-actions>
+                                                <v-btn 
+                                                    text
+                                                    color = "cyan darken-4"
+                                                >Details</v-btn>
+                                            </v-card-actions>
+                                        </div>
+
+                                        <v-avatar
+                                            class= "ma-3"    
+                                            size= "125"
+                                            tile
+                                        >
+                                            <v-img :src= "item.gambar"></v-img>
+                                        </v-avatar>
+                                    </div>
+                                </v-card>
+                            </v-col>    
+                        </v-row>
+                    </v-container>
+                </v-col>
+            </v-row>
+        </v-container>        
+        </v-layout>    
     </v-container>
 </template>
 
