@@ -1,19 +1,33 @@
 <template>
     <v-container>
         <h1 v-text="kostData.nama"></h1>
-        <h2>{{ dummy2 }}</h2>
+            <v-img :src= "kostData.gambar" width= "400px" ></v-img>
+            <v-spacer></v-spacer>
             <v-card
-                class="mx-auto ma-1"
-                raised
-                tile
+                class="mx-auto ma-3 pa-3"
             >
                 <v-card-title
                     class= "headline"
-                    v-text= "kostData.nama"
+                    v-text= "kostData.alamat"
                 ></v-card-title>   
                              
             </v-card>
-            <v-img :src= "kostData.gambar" width= "200px"></v-img>
+
+            <v-simple-table v-slot:default>
+                <thead>
+                    <tr>
+                        <th class="text-left">  </th>
+                        <th class="text-left">Fasilitas Kost:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for= "(item,i) in kostData.fasilitas" :key= "i">
+                        <td>{{ i }}</td>
+                        <td>{{ item }}</td>
+                    </tr>
+                </tbody>
+            </v-simple-table>
+            
         
     </v-container>
 </template>
@@ -25,14 +39,10 @@ export default {
     name: 'DetailsPage',
     data() {
         return {
-            dummy: null,
-            dummy2: null,
             kostData: []
         }
     },
     async mounted() {
-        this.dummy = this.$route.query,
-        this.dummy2 = this.$route.query.id
         const url = 'http://localhost:4040/info?id='+this.$route.query.id
         const test = await this.$axios.$get(url)
                                       .then(response => (this.kostData = response))
