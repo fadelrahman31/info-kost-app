@@ -23,6 +23,7 @@
                 <v-list-item
                     v-for= "item in items"
                     :key= "item.title"
+                    :to= "item.path"
                     link
                 >
                     <v-list-item-content>
@@ -46,7 +47,13 @@
             <v-btn 
                 flat
                 color="teal darken-3"
+                class="ma-2"
             >sign in</v-btn>
+            <v-btn 
+                flat
+                color="teal darken-3"
+                disabled=""
+            >sign out</v-btn>
         </v-app-bar>
     </span>
 </template>
@@ -61,6 +68,7 @@ export default {
             items: [
                 {
                     title: 'Home',
+                    path: '/landing'
                 },
                 {
                     title: 'About'

@@ -11,7 +11,7 @@
                     class="flex-grow-1 flex-shrink-0"
                 >
                     <h1>Selamat Datang! </h1>
-                    <p>Temukan informasi kost yang paling cocok untuk Anda di area Jakarta ini!</p>
+                    <p>Temukan informasi kost yang paling cocok untuk Anda di area <b>Jakarta</b> ini!</p>
                     <v-spacer></v-spacer>
                     <v-card
                         class="mx-auto"   
@@ -27,7 +27,7 @@
                         <v-card-subtitle class="pb-0">Copyright 2019</v-card-subtitle>
 
                         <v-card-text class="text--primary">
-                            <div>Login ke akun InfoKostMu Sekarang!</div>
+                            <div>Login ke akun <b>InfoKostMu</b> Sekarang!</div>
                             <div>Tambahkan, Sesuaikan, dan Update Informasi Kost yang kamu iklankan!</div>
                         </v-card-text>
 
@@ -40,6 +40,7 @@
                             </v-btn>
                         </v-card-actions>
                     </v-card>
+                    
                 </v-col>
                 <v-spacer></v-spacer>
                 <v-col
@@ -58,7 +59,7 @@
                                 class= "flex-grow-1 flex-shrink-0"
                             >
                                 <v-card
-                                    class="mx-auto ma-2"
+                                    class="mx-auto ma-1"
                                     max-width="1000"
                                     max-height="600"
                                     raised
@@ -80,6 +81,7 @@
                                                 <v-btn 
                                                     text
                                                     color = "cyan darken-4"
+                                                    @click= "goToDetails(i)"
                                                 >Details</v-btn>
                                             </v-card-actions>
                                         </div>
@@ -106,6 +108,7 @@
 
 <script>
 import axios from '@nuxtjs/axios'
+import details from '@/pages/details'
 
 export default {
     name: 'LandingPage',
@@ -115,9 +118,19 @@ export default {
         };       
     },
     methods: {
-        async dummy() {
-            const tester = await this.$axios.$get('http://localhost:4040/info')
+        dummy() {
+            const tester = this.$route.query
+            const tester2 = this.$route.path
             console.log(tester)
+            console.log(tester2)
+        },
+        goToDetails(i) {
+            this.$router.push({
+                path: 'details',
+                query: {
+                    id: this.kostList[i].id
+                }
+            })
         }
     },
     async mounted() {
