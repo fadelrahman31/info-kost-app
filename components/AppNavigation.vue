@@ -42,17 +42,21 @@
             <v-app-bar-nav-icon
                 @click.stop="drawer = !drawer"
             ></v-app-bar-nav-icon><v-spacer></v-spacer>
-            <v-toolbar-title class= "font-weight-bold">{{ appTitle }}</v-toolbar-title>                
+            <v-card class="mx-auto pa-2" color="cyan darken-3" raised>
+                <v-toolbar-title class= "font-weight-bold" align-center>{{ appTitle }}</v-toolbar-title>                
+            </v-card>            
             <v-spacer></v-spacer>
             <v-btn 
                 flat
-                color="teal darken-3"
-                class="ma-2"
+                color="teal darken-4"
+                class=""
+                text
             >sign in</v-btn>
             <v-btn 
                 flat
-                color="teal darken-3"
+                color="teal darken-4"
                 disabled=""
+                text
             >sign out</v-btn>
         </v-app-bar>
     </span>
@@ -63,7 +67,7 @@ export default {
     name: 'AppNavigation',
     data() {
         return {
-            appTitle: 'InfoKostMu',
+            appTitle: 'IndeKos.xyz',
             drawer: null,
             items: [
                 {

@@ -1,6 +1,20 @@
 <template>
-    <v-container fluid fill-height>
-        <v-layout justify-center column pa-5>
+    <v-container fluid fill-height >
+        <v-layout justify-center align-center column pa-5>
+                <v-card
+                    class="mx-auto"  
+                >
+                    <v-img
+                        class="white--text align-end"
+                        height="300px"
+                        src="https://drive.google.com/uc?id=1boYl8iExWQgNat6RfJ56X_2vhzZd7UX9&export=download"
+                    >
+                        <v-card-title>Lagi butuh info kost di sekitar area Jakarta? Well, kamu datang ke tempat yang tepat!</v-card-title>
+                    </v-img>
+
+                    <v-card-actions>
+                    </v-card-actions>
+                </v-card>
         <v-container fluid>
             <v-row
                 justify="space-between"
@@ -14,7 +28,7 @@
                     <p>Temukan informasi kost yang paling cocok untuk Anda di area <b>Jakarta</b> ini!</p>
                     <v-spacer></v-spacer>
                     <v-card
-                        class="mx-auto"   
+                        class="mx-auto ma-3"   
                     >
                         <v-img
                             class="white--text align-end"
@@ -38,6 +52,27 @@
                             >
                                 login
                             </v-btn>
+                        </v-card-actions>
+                    </v-card>
+                    <v-spacer></v-spacer>
+                    <v-card
+                        class="mx-auto ma-3"   
+                    >
+                        <v-img
+                            class="white--text align-end"
+                            height="200px"
+                            src="https://images.wallpaperscraft.com/image/tower_skyscraper_city_151445_1280x720.jpg"
+                        >
+                            <v-card-title>IndeKos.xyz : Tips 101</v-card-title>
+                        </v-img>
+
+                        <v-card-subtitle class="pb-0"><i>via Admin :)</i></v-card-subtitle>
+
+                        <v-card-text class="text--primary">
+                            <div>Kamu bisa langsung tahu lokasi Kost dengan <b>klik alamat</b> yang ada di halaman Details!</div>
+                        </v-card-text>
+
+                        <v-card-actions>
                         </v-card-actions>
                     </v-card>
                     
@@ -68,7 +103,7 @@
                                     <div class="d-flex flex-no-wrap justify-space-between">
                                         <div>
                                             <v-card-title
-                                                class= "headline"
+                                                class= "headline font-weight-medium"
                                                 v-text= "item.nama"
                                             ></v-card-title>
 
