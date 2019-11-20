@@ -29,26 +29,13 @@
                                 </v-btn>
                             </v-card-actions>
                         </v-card>
-                        <v-spacer class="ma-6"></v-spacer>
-                        <v-card
-                            class="mx-auto"
-                        >
-                            <GmapMap
-                                :center="{lat:10, lng:10}"
-                                :zoom="7"
-                                map-type-id="terrain"
-                                style="width: 450px; height: 300px"
-                            >
-                                <GmapMarker
-                                    :key="index"
-                                    v-for="(m, index) in markers"
-                                    :position="m.position"
-                                    :clickable="true"
-                                    :draggable="true"
-                                    @click="center=m.position"
-                                />
-                            </GmapMap>
-                        </v-card>                        
+                        <v-btn
+                            class="ma-6"
+                            dark
+                            color="blue-grey darken-1"
+                            target="_blank"
+                            @click="goToGMaps"
+                        >show in google maps!</v-btn>           
                     </v-col>
                     <v-spacer></v-spacer>
                     <v-col
@@ -56,7 +43,7 @@
                         md="6"
                     >
                         <h1 class="pa-3">{{ kostData.nama }}</h1>
-                        <div class="headline pa-3">{{ kostData.alamat }}</div>
+                        <div class="headline pa-3" href="mapsUrl">{{ kostData.alamat }}</div>
                         <div class="pa-3">{{ kostData.harga }}</div>
                         
                         <v-card
@@ -89,26 +76,31 @@
 <script>
 import axios from '@nuxtjs/axios'
 import Vue from 'vue'
-import * as VueGoogleMaps from 'vue2-google-maps'
 
-Vue.use(VueGoogleMaps, {
-    load: {
-        key: 'AIzaSyDY8OhXc9NdPbC_nxwvw7DoIpCSX7TKmaw',
-        library: 'places'
-    }
-})
 
 export default {
     name: 'DetailsPage',
     data() {
         return {
-            kostData: []
+            kostData: [],
+            mapsUrl: ""
+        }
+    },
+    methods:{
+        goToGMaps(){
+            console.log(this.mapsUrl)
+            window.open(this.mapsUrl)
         }
     },
     async mounted() {
         const url = 'http://localhost:4040/info?id='+this.$route.query.id
         const test = await this.$axios.$get(url)
                                       .then(response => (this.kostData = response))
+
+        const urlMaps = 'http://localhost:1234/url?key=AIzaSyC7VZFbamp-hvfH-_Qlke0RaarlHMYO1tM&query='+this.kostData.alamat
+        const queryMap = await this.$axios.$get(urlMaps)
+                                          .then(response => (this.mapsUrl = response))
+        console.log(queryMap)
         console.log(this.kostData)
 
     }
