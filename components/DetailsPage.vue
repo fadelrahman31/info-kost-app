@@ -29,6 +29,26 @@
                                 </v-btn>
                             </v-card-actions>
                         </v-card>
+                        <v-spacer class="ma-6"></v-spacer>
+                        <v-card
+                            class="mx-auto"
+                        >
+                            <GmapMap
+                                :center="{lat:10, lng:10}"
+                                :zoom="7"
+                                map-type-id="terrain"
+                                style="width: 450px; height: 300px"
+                            >
+                                <GmapMarker
+                                    :key="index"
+                                    v-for="(m, index) in markers"
+                                    :position="m.position"
+                                    :clickable="true"
+                                    :draggable="true"
+                                    @click="center=m.position"
+                                />
+                            </GmapMap>
+                        </v-card>                        
                     </v-col>
                     <v-spacer></v-spacer>
                     <v-col
@@ -68,6 +88,15 @@
 
 <script>
 import axios from '@nuxtjs/axios'
+import Vue from 'vue'
+import * as VueGoogleMaps from 'vue2-google-maps'
+
+Vue.use(VueGoogleMaps, {
+    load: {
+        key: 'AIzaSyDY8OhXc9NdPbC_nxwvw7DoIpCSX7TKmaw',
+        library: 'places'
+    }
+})
 
 export default {
     name: 'DetailsPage',
@@ -81,6 +110,7 @@ export default {
         const test = await this.$axios.$get(url)
                                       .then(response => (this.kostData = response))
         console.log(this.kostData)
+
     }
 }
 </script>
