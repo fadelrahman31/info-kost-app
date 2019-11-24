@@ -45,7 +45,7 @@
                         <h1 class="pa-3">{{ kostData.nama }}</h1>
                         <div class="headline pa-3" href="mapsUrl">{{ kostData.alamat }}</div>
                         <div class="pa-3">{{ kostData.harga }}</div>
-                        
+                        <div class="pa-3 font-italic">Provided by : {{ kostData.id_pemilik }}</div>
                         <v-card
                             class="flex-grow-1 flex-shrink-0 ma-3"
                         >
@@ -62,9 +62,7 @@
                                 </tbody>
                             </v-simple-table>
                         </v-card>
-
                     </v-col>
-
                 </v-row>
             </v-container>
         </v-layout>
@@ -93,16 +91,33 @@ export default {
         }
     },
     async mounted() {
-        const url = 'http://localhost:4040/info?id='+this.$route.query.id
+        const url = 'https://indekos.api.indekos.xyz/info?id='+this.$route.query.id
         const test = await this.$axios.$get(url)
-                                      .then(response => (this.kostData = response))
+        var objTest = test.map(function(x){
+            return {
+                id          : x[0],
+                id_pemilik  : x[1],
+                nama        : x[2],
+                alamat      : x[3],
+                fasilitas   : x[4],
+                harga       : x[5],
+                gambar      : x[6]
+            }
+        })
+        this.kostData = objTest[0]
+        const facils = this.kostData.fasilitas
+        let convFacils = facils.replace(/'/g,'"')
+        const fixedFacils = JSON.parse(convFacils)
+        this.kostData.fasilitas = fixedFacils
+        //console.log(this.kostData.fasilitas)
 
-        const urlMaps = 'http://localhost:1234/url?key=AIzaSyC7VZFbamp-hvfH-_Qlke0RaarlHMYO1tM&query='+this.kostData.alamat
+        const urlMaps = 'https://placedetails.api.indekos.xyz/url?key=AIzaSyC7VZFbamp-hvfH-_Qlke0RaarlHMYO1tM&query='+this.kostData.alamat
         const queryMap = await this.$axios.$get(urlMaps)
                                           .then(response => (this.mapsUrl = response))
-        console.log(queryMap)
-        console.log(this.kostData)
+        //console.log(queryMap)
+        //console.log(this.kostData)
 
+        
     }
 }
 </script>

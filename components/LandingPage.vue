@@ -69,7 +69,7 @@
                         <v-card-subtitle class="pb-0"><i>via Admin :)</i></v-card-subtitle>
 
                         <v-card-text class="text--primary">
-                            <div>Kamu bisa langsung tahu lokasi Kost dengan <b>klik alamat</b> yang ada di halaman Details!</div>
+                            <div>Kamu bisa langsung tahu lokasi Kost dengan <b>klik tombol</b> yang ada di halaman Details!</div>
                         </v-card-text>
 
                         <v-card-actions>
@@ -133,6 +133,7 @@
                             </v-col>    
                         </v-row>
                     </v-container>
+                
                 </v-col>
             </v-row>
         </v-container>        
@@ -169,8 +170,20 @@ export default {
         }
     },
     async mounted() {
-        await this.$axios.$get('http://localhost:4040/info')
-             .then(response => (this.kostList = response))
+        const dummy = await this.$axios.$get('https://indekos.api.indekos.xyz/info')
+        var objDummy = dummy.map(function(x){
+            return {
+                id          : x[0],
+                id_pemilik  : x[1],
+                nama        : x[2],
+                alamat      : x[3],
+                fasilitas   : x[4],
+                harga       : x[5],
+                gambar      : x[6]
+            }
+        })
+        this.kostList = objDummy
+        console.log(this.kostList)
     }
 }
 </script>
