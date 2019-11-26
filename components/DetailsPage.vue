@@ -91,7 +91,8 @@ export default {
         }
     },
     async mounted() {
-        const url = 'https://indekos.api.indekos.xyz/info?id='+this.$route.query.id
+        //const url = 'https://indekos.api.indekos.xyz/info?id='+this.$route.query.id
+        const url = 'http://localhost:4040/info?id='+this.$route.query.id
         const test = await this.$axios.$get(url)
         var objTest = test.map(function(x){
             return {

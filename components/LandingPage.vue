@@ -170,7 +170,8 @@ export default {
         }
     },
     async mounted() {
-        const dummy = await this.$axios.$get('https://indekos.api.indekos.xyz/info')
+        //const dummy = await this.$axios.$get('https://indekos.api.indekos.xyz/info')
+        const dummy = await this.$axios.$get('http://localhost:4040/info')
         var objDummy = dummy.map(function(x){
             return {
                 id          : x[0],
