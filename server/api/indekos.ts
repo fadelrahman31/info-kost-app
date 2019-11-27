@@ -7,7 +7,9 @@ interface RequestBody {
 }
 
 router.get("/info", async (req, res) => {
-    const kostList = await Axios.get('https://indekos.api.indekos.xyz/info');
+    //const kostList = await Axios.get('https://indekos.api.indekos.xyz/info');
+    const response = await Axios.get('http://localhost:4040/info');
+    const kostList = response.data;
     res.send(kostList);
 })
 

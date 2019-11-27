@@ -1,5 +1,5 @@
-import indekosRoute from './api/placedetails'
-import placeRoute from './api/indekos'
+import placeRoute from './api/placedetails'
+import indekosRoute from './api/indekos'
 
 export default function(express){
     express.use('/api/indekos',indekosRoute);

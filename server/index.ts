@@ -24,7 +24,7 @@ async function start() {
     await nuxt.ready()
   }
 
-  routes(app)
+  routes(app);
 
   // Give nuxt middleware to express
   app.use(nuxt.render)
