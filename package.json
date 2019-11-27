@@ -5,17 +5,20 @@
   "author": "fadelrahman31, didithilmy",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "dev": "cross-env NODE_ENV=development nodemon server/index.ts --watch server",
     "build": "nuxt build",
-    "start": "cross-env NODE_ENV=production node server/index.js",
+    "start": "cross-env NODE_ENV=production node server/index.ts",
     "generate": "nuxt generate"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.8.0",
+    "@types/node": "^12.12.14",
     "axios": "^0.19.0",
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
     "nuxt": "^2.0.0",
+    "ts-node": "^8.5.2",
+    "typescript": "^3.7.2",
     "vue2-google-maps": "^0.10.7"
   },
   "devDependencies": {
