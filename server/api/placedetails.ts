@@ -1,20 +1,22 @@
 import axios from "axios";
+import Axios from "axios";
 
 const router = require('express').Router();
 
-router.get("/", async (req, res)=>{
-    //get geometry from string
-})
-
-router.get("/", async (req, res)=>{
-    //get address from string
-})
-
-router.get("/", async (req, res)=>{
+router.get("/place", async (req, res)=>{
     //get gmaps url from string
+    const url = "https://placedetails.api.indekos.xyz/url?key=AIzaSyC7VZFbamp-hvfH-_Qlke0RaarlHMYO1tM&query="+req.query.alamat
+    Axios.get(url)
+         .then(response => {
+             res.send(response.data)
+         })
+         .catch(e => {
+             res.status(500)
+             res.send("Error")
+         })
 })
 
-router.get("/", async (req, res)=>{
+router.get("/place", async (req, res)=>{
     //get something motherfucker
 })
 

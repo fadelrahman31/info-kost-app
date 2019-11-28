@@ -170,20 +170,8 @@ export default {
         }
     },
     async mounted() {
-        //const dummy = await this.$axios.$get('https://indekos.api.indekos.xyz/info')
-        const dummy = await this.$axios.$get('http://localhost:4040/info')
-        var objDummy = dummy.map(function(x){
-            return {
-                id          : x[0],
-                id_pemilik  : x[1],
-                nama        : x[2],
-                alamat      : x[3],
-                fasilitas   : x[4],
-                harga       : x[5],
-                gambar      : x[6]
-            }
-        })
-        this.kostList = objDummy
+        const dummy = await this.$axios.$get('http://localhost:3000/api/indekos/info')
+        this.kostList = dummy
         console.log(this.kostList)
     }
 }

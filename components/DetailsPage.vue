@@ -91,34 +91,16 @@ export default {
         }
     },
     async mounted() {
-        //const url = 'https://indekos.api.indekos.xyz/info?id='+this.$route.query.id
-        const url = 'http://localhost:4040/info?id='+this.$route.query.id
+        const url = 'http://localhost:3000/api/indekos/info/'+this.$route.query.id
         const test = await this.$axios.$get(url)
-        var objTest = test.map(function(x){
-            return {
-                id          : x[0],
-                id_pemilik  : x[1],
-                nama        : x[2],
-                alamat      : x[3],
-                fasilitas   : x[4],
-                harga       : x[5],
-                gambar      : x[6]
-            }
-        })
-        this.kostData = objTest[0]
-        const facils = this.kostData.fasilitas
-        let convFacils = facils.replace(/'/g,'"')
-        const fixedFacils = JSON.parse(convFacils)
-        this.kostData.fasilitas = fixedFacils
-        //console.log(this.kostData.fasilitas)
-
-        const urlMaps = 'https://placedetails.api.indekos.xyz/url?key=AIzaSyC7VZFbamp-hvfH-_Qlke0RaarlHMYO1tM&query='+this.kostData.alamat
+        this.kostData = test
+        const urlMaps = 'http://localhost:3000/api/placedetails/place?alamat='+this.kostData.alamat
+        //const urlMaps = 'https://placedetails.api.indekos.xyz/url?key=AIzaSyC7VZFbamp-hvfH-_Qlke0RaarlHMYO1tM&query='+this.kostData.alamat
         const queryMap = await this.$axios.$get(urlMaps)
-                                          .then(response => (this.mapsUrl = response))
-        //console.log(queryMap)
-        //console.log(this.kostData)
-
-        
+                                          .then(response => (
+                                              this.mapsUrl = response.data,
+                                              console.log(response.data)
+                                            ))
     }
 }
 </script>

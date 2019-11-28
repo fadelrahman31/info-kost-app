@@ -168,7 +168,7 @@ export default {
                 gambar          : this.gambar
             }
             console.log(postQuery)
-            this.$axios.post('http://localhost:4040/info',postQuery)
+            this.$axios.post('http://localhost:3000/api/indekos/info',postQuery)
                        .then((response)=>{})
                        .catch((e)=>{
                            console.error(e)
