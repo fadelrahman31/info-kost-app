@@ -35,7 +35,7 @@ module.exports = {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/vuetify',
-    ['@nuxtjs/dotenv', { filename: '.env.frontend' }]
+    ['@nuxtjs/dotenv', { filename: process.env.NODE_ENV === 'development' ? '.env.frontend' : '.env.frontend.production' }]
   ],
   /*
    ** Nuxt.js modules
@@ -48,7 +48,9 @@ module.exports = {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: process.env.API_URL
+  },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
