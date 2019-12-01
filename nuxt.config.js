@@ -49,7 +49,7 @@ module.exports = {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseUrl: process.env.API_URL
+    baseURL: process.env.API_URL
   },
   /*
    ** vuetify module configuration
