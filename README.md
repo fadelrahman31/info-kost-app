@@ -1,7 +1,6 @@
 # info-kost-app
 
-> Aplikasi website penyedia informasi kost
-> Untuk akses aplikasi yang telah ter-deploy secara online, dapat diakses pada laman https://app.indekos.xyz/
+> Aplikasi website penyedia informasi kost, untuk akses aplikasi yang telah ter-deploy secara online, dapat diakses pada laman https://app.indekos.xyz/
 
 ## Anggota Tim
 - Fadel Nararia Rahman 18217005
