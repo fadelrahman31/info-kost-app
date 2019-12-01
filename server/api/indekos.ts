@@ -4,6 +4,8 @@ import authMiddleware from '../auth-middleware';
 const router = require('express').Router();
 router.use(authMiddleware());
 
+const indekosApiUrl = process.env.INDEKOS_API_BASE_URL || "https://indekos.api.indekos.xyz"
+
 interface RequestBody {
     id: string;
     nama: string;
@@ -14,7 +16,7 @@ interface RequestBody {
 }
 
 router.get("/info", async (req, res) => {
-    const response = await Axios.get('https://indekos.api.indekos.xyz/info');
+    const response = await Axios.get(`${indekosApiUrl}/info`);
     const kostData = response.data || [];
     const kostList = kostData.map(function(x){
         return {
@@ -31,7 +33,7 @@ router.get("/info", async (req, res) => {
 })
 
 router.get("/info/admin", async (req, res)=>{
-  const url = 'https://indekos.api.indekos.xyz/info?id_pemilik=' + req.user.sub
+  const url = `${indekosApiUrl}/info?id_pemilik=` + req.user.sub
   const response = await Axios.get(url);
   const kostData = response.data || [];
   const kostList = kostData.map(function(x){
@@ -49,7 +51,7 @@ router.get("/info/admin", async (req, res)=>{
 })
 
 router.get("/info/:id", async (req, res)=>{
-    const url = 'https://indekos.api.indekos.xyz/info?id=' + req.params.id;
+    const url = `${indekosApiUrl}/info?id=${req.params.id}`;
     const response = await Axios.get(url);
     const resp = response.data || [];
     const objResp = resp.map(function(x){
@@ -73,7 +75,7 @@ router.get("/info/:id", async (req, res)=>{
 })
 
 router.post("/info", async (req,res) => {
-    const url = "https://indekos.api.indekos.xyz/info"
+    const url = `${indekosApiUrl}/info`
     let requestBody = {...req.body};
     requestBody.id_pemilik = `${req.user.sub}`;
 
@@ -88,7 +90,7 @@ router.post("/info", async (req,res) => {
 })
 
 router.put("/info/:id", async (req, res)=>{
-  const url = "https://indekos.api.indekos.xyz/info?id="+req.params.id
+  const url = `${indekosApiUrl}/info?id=${req.params.id}`;
   let requestBody = {...req.body};
   requestBody.id_pemilik = `${req.user.sub}`;
   requestBody.id = req.params.id;
@@ -105,7 +107,7 @@ router.put("/info/:id", async (req, res)=>{
 })
 
 router.delete("/info/:id", async (req,res)=>{
-    const url = "https://indekos.api.indekos.xyz/info?id="+req.params.id
+    const url = `${indekosApiUrl}/info?id=${req.params.id}`
     Axios.delete(url)
          .then(response => {
              res.send("Succeed")
