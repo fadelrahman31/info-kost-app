@@ -2,7 +2,7 @@
     <v-container fluid fill-height >
         <v-layout justify-center align-center column pa-5>
                 <v-card
-                    class="mx-auto"  
+                    class="mx-auto"
                 >
                     <v-img
                         class="white--text align-end"
@@ -28,7 +28,7 @@
                     <p>Temukan informasi kost yang paling cocok untuk Anda di area <b>Jakarta</b> ini!</p>
                     <v-spacer></v-spacer>
                     <v-card
-                        class="mx-auto ma-3"   
+                        class="mx-auto ma-3"
                     >
                         <v-img
                             class="white--text align-end"
@@ -49,6 +49,7 @@
                             <v-btn
                                 color="orange"
                                 text
+                                to="/login"
                             >
                                 login
                             </v-btn>
@@ -56,7 +57,7 @@
                     </v-card>
                     <v-spacer></v-spacer>
                     <v-card
-                        class="mx-auto ma-3"   
+                        class="mx-auto ma-3"
                     >
                         <v-img
                             class="white--text align-end"
@@ -75,7 +76,7 @@
                         <v-card-actions>
                         </v-card-actions>
                     </v-card>
-                    
+
                 </v-col>
                 <v-spacer></v-spacer>
                 <v-col
@@ -83,12 +84,12 @@
                     md="6"
                 >
                     <v-container fluid>
-                        <v-row 
+                        <v-row
                             v-for= "(item,i) in kostList"
                             :key= "i"
-                            justify="space-between" 
+                            justify="space-between"
                             style= "flex-wrap: nowrap;"
-                        >   
+                        >
                             <v-col
                                 cols= "11"
                                 class= "flex-grow-1 flex-shrink-0"
@@ -98,7 +99,7 @@
                                     max-width="1000"
                                     max-height="600"
                                     raised
-                                    tile                
+                                    tile
                                 >
                                     <div class="d-flex flex-no-wrap justify-space-between">
                                         <div>
@@ -107,13 +108,13 @@
                                                 v-text= "item.nama"
                                             ></v-card-title>
 
-                                            <v-card-subtitle 
+                                            <v-card-subtitle
                                                 v-text= "item.harga"
                                                 class= "font-weight-medium"
                                             ></v-card-subtitle>
 
                                             <v-card-actions>
-                                                <v-btn 
+                                                <v-btn
                                                     text
                                                     color = "cyan darken-4"
                                                     @click= "goToDetails(i)"
@@ -122,7 +123,7 @@
                                         </div>
 
                                         <v-avatar
-                                            class= "ma-3"    
+                                            class= "ma-3"
                                             size= "125"
                                             tile
                                         >
@@ -130,14 +131,14 @@
                                         </v-avatar>
                                     </div>
                                 </v-card>
-                            </v-col>    
+                            </v-col>
                         </v-row>
                     </v-container>
-                
+
                 </v-col>
             </v-row>
-        </v-container>        
-        </v-layout>    
+        </v-container>
+        </v-layout>
     </v-container>
 </template>
 
@@ -151,7 +152,7 @@ export default {
     data() {
         return {
             kostList: null
-        };       
+        };
     },
     methods: {
         dummy() {

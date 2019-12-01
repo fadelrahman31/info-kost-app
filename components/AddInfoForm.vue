@@ -19,7 +19,7 @@
                             <v-img
                                 class="white--text align-end"
                                 height="300px"
-                                src= "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQNEr8GH7KkAX7wPaoio7ft-eBfjSE12JvQVbCsKmUxRmC4MEJ_"                
+                                src= "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQNEr8GH7KkAX7wPaoio7ft-eBfjSE12JvQVbCsKmUxRmC4MEJ_"
                             >
                             </v-img>
                             <v-card-title class="font-italic">
@@ -95,7 +95,7 @@
                                 ></v-text-field>
                             </v-form>
                         </v-card>
-                        <v-btn  
+                        <v-btn
                             color="success"
                             class="ma-3"
                             @click="submitForm"
@@ -109,7 +109,6 @@
 
 <script>
 import axios from '@nuxtjs/axios'
-import landing from '@/pages/landing'
 
 export default {
     name: 'AddInfoForm',
@@ -174,7 +173,7 @@ export default {
                            console.error(e)
                        })
             this.$router.push({
-                path: 'landing'
+                path: '/'
             })
         }
     }
