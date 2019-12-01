@@ -1,22 +1,21 @@
 <template>
-    <v-app>
+    <div>
         <app-navigation></app-navigation>
         <v-content>
-            <list-info></list-info>
+            <edit-info-form :id="$route.params.id"></edit-info-form>
         </v-content>
-    </v-app>
+    </div>
 </template>
 
 <script>
 import AppNavigation from '@/components/AppNavigation'
-import ListInfo from '@/components/ListInfo'
+import EditInfoForm from '@/components/EditInfoForm'
 
 export default {
-    name: 'admin',
+    name: 'add_info',
     components: {
         AppNavigation,
-        ListInfo
+        EditInfoForm
     }
-    
 }
 </script>

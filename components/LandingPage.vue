@@ -155,12 +155,6 @@ export default {
         };
     },
     methods: {
-        dummy() {
-            const tester = this.$route.query
-            const tester2 = this.$route.path
-            console.log(tester)
-            console.log(tester2)
-        },
         goToDetails(i) {
             this.$router.push({
                 path: 'details',
@@ -171,9 +165,8 @@ export default {
         }
     },
     async mounted() {
-        const dummy = await this.$axios.$get('http://localhost:3000/api/indekos/info')
+        const dummy = await this.$axios.$get('/api/indekos/info')
         this.kostList = dummy
-        console.log(this.kostList)
     }
 }
 </script>

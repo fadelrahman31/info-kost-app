@@ -1,21 +1,22 @@
 <template>
-    <v-app>
+    <div>
         <app-navigation></app-navigation>
         <v-content>
-            <add-info-form></add-info-form>
+            <list-info></list-info>
         </v-content>
-    </v-app>
+    </div>
 </template>
 
 <script>
 import AppNavigation from '@/components/AppNavigation'
-import AddInfoForm from '@/components/AddInfoForm'
+import ListInfo from '@/components/ListInfo'
 
 export default {
-    name: 'add_info',
+    name: 'admin',
     components: {
         AppNavigation,
-        AddInfoForm
+        ListInfo
     }
+
 }
 </script>

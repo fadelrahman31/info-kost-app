@@ -9,7 +9,10 @@ import authMiddleware from './auth-middleware';
 
 app.use(express.json())
 app.use(cookieParser());
-app.use(authMiddleware());
+app.use(authMiddleware(), function (err, req, res, next) {
+  if (err.code === 'invalid_token') return next();
+  return next(err);
+});
 
 import routes from './routes'
 import router from './api/account'

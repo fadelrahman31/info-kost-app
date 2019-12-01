@@ -35,14 +35,14 @@
             </v-list>
           <v-list nav dense v-if="$store.state.loggedIn">
             <v-subheader>Admin</v-subheader>
-            <v-list-item link>
+            <v-list-item link to="/admin" exact>
               <v-list-item-content>
                 <v-list-item-title>
                   List info kos
                 </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
-            <v-list-item link to="/add_info">
+            <v-list-item link to="/admin/add" exact>
               <v-list-item-content>
                 <v-list-item-title>
                   Add info kos
@@ -89,9 +89,6 @@ export default {
         {
           title: 'Home',
           path: '/'
-        },
-        {
-          title: 'About'
         }
       ]
     };

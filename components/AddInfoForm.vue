@@ -10,7 +10,7 @@
                     <v-spacer></v-spacer>
                     <v-col
                         cols="12"
-                        md="5"
+                        md="6"
                     >
                         <v-card
                             class="mx-auto"
@@ -33,7 +33,7 @@
                         md="6"
                     >
                         <v-card
-                            class="ma-3 pa-5"
+                            class="pa-5"
                             raised
                             tile
                         >
@@ -67,24 +67,13 @@
                                     required
                                 ></v-text-field>
                                 <h3>Tambahkan list fasilitas Kost anda!</h3>
-                                <!--
-                                <p>Contoh : ['Kamar Mandi', 'Parkir Dalam']</p>
-                                <v-text-field
-                                    v-model= "fasilitas"
-                                    :rules= "rulesFasilitas"
-                                    label= "Fasilitas Kost"
-                                    required
-                                ></v-text-field>
-                                -->
                                 <v-container fluid>
-                                <!--    <p>{{ fasilitas }}</p> -->
                                     <v-switch v-model= "fasilitas0" label='Ruang Tamu' value='Ruang Tamu'></v-switch>
                                     <v-switch v-model= "fasilitas0" label="Kamar Mandi" value='Kamar Mandi'></v-switch>
                                     <v-switch v-model= "fasilitas0" label="Wifi" value='Wifi'></v-switch>
                                     <v-switch v-model= "fasilitas0" label="Parkir Motor" value='Parkir Motor'></v-switch>
                                     <v-switch v-model= "fasilitas0" label="Security Or Cctv" value='Security Or Cctv'></v-switch>
                                 </v-container>
-                                <!--<v-btn @click="replaceStr" class="ma-3">test replace " "</v-btn>-->
                                 <h3>Masukkan link dari gambar Kost anda!</h3>
                                 <p>Contoh : https://freepics.reg/img01.png</p>
                                 <v-text-field
@@ -99,6 +88,7 @@
                             color="success"
                             class="ma-3"
                             @click="submitForm"
+                            :loading="submitting"
                         >save and submit</v-btn>
                     </v-col>
                 </v-row>
@@ -114,6 +104,7 @@ export default {
     name: 'AddInfoForm',
     data: () => ({
         valid: true,
+        submitting: false,
         nama: '',
         rulesNama: [
             v => !!v || 'Nama is required',
@@ -159,22 +150,26 @@ export default {
             let idKost = this.generateID(8,'12345abcdefxzpqi')
             var postQuery = {
                 id              : idKost,
-                id_pemilik      : "",
                 nama            : this.nama,
                 alamat          : this.alamat,
                 fasilitas       : this.fasilitas,
                 harga           : this.harga,
                 gambar          : this.gambar
             }
-            console.log(postQuery)
-            this.$axios.post('http://localhost:3000/api/indekos/info',postQuery)
-                       .then((response)=>{})
-                       .catch((e)=>{
-                           console.error(e)
-                       })
-            this.$router.push({
-                path: '/'
-            })
+
+            this.submitting = true;
+            this.$axios.post('/api/indekos/info',postQuery)
+              .then((response)=>{
+                this.$router.push({
+                  path: '/'
+                })
+              })
+              .catch((e)=>{
+                console.error(e)
+              })
+              .finally(() => {
+                this.submitting = true;
+              })
         }
     }
 }

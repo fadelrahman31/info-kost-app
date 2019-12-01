@@ -11,7 +11,7 @@
                         class="flex-grow-1 flex-shrink-0"
                     >
                         <v-card
-                            class="mx-auto"  
+                            class="mx-auto"
                         >
                             <v-img
                                 class="white--text align-end"
@@ -35,7 +35,7 @@
                             color="blue-grey darken-1"
                             target="_blank"
                             @click="goToGMaps"
-                        >show in google maps!</v-btn>           
+                        >show in google maps!</v-btn>
                     </v-col>
                     <v-spacer></v-spacer>
                     <v-col
@@ -66,8 +66,8 @@
                 </v-row>
             </v-container>
         </v-layout>
-            
-        
+
+
     </v-container>
 </template>
 
@@ -86,20 +86,18 @@ export default {
     },
     methods:{
         goToGMaps(){
-            console.log(this.mapsUrl)
             window.open(this.mapsUrl)
         }
     },
     async mounted() {
-        const url = 'http://localhost:3000/api/indekos/info/'+this.$route.query.id
+        const url = '/api/indekos/info/'+this.$route.query.id
         const test = await this.$axios.$get(url)
         this.kostData = test
-        const urlMaps = 'http://localhost:3000/api/placedetails/place?alamat='+this.kostData.alamat
+        const urlMaps = '/api/placedetails/place?alamat='+this.kostData.alamat
         //const urlMaps = 'https://placedetails.api.indekos.xyz/url?key=AIzaSyC7VZFbamp-hvfH-_Qlke0RaarlHMYO1tM&query='+this.kostData.alamat
         const queryMap = await this.$axios.$get(urlMaps)
                                           .then(response => (
-                                              this.mapsUrl = response.data,
-                                              console.log(response.data)
+                                              this.mapsUrl = response.data
                                             ))
     }
 }

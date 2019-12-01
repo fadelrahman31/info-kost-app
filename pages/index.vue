@@ -1,11 +1,10 @@
 <template>
-    <v-app>
-        <app-navigation>
-        </app-navigation>
+    <div>
+        <app-navigation></app-navigation>
         <v-content>
             <landing-page></landing-page>
         </v-content>
-    </v-app>
+    </div>
 </template>
 
 <script>

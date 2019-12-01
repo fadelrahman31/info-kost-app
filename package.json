@@ -28,8 +28,8 @@
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^0.3.4",
-    "nodemon": "^1.18.9",
     "@nuxtjs/vuetify": "^1.0.0",
+    "nodemon": "^1.18.9",
     "prettier": "^1.16.4",
     "ts-node": "^8.5.2"
   }

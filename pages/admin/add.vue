@@ -2,20 +2,20 @@
     <div>
         <app-navigation></app-navigation>
         <v-content>
-            <details-page></details-page>
+            <add-info-form></add-info-form>
         </v-content>
     </div>
 </template>
 
 <script>
 import AppNavigation from '@/components/AppNavigation'
-import DetailsPage from '@/components/DetailsPage'
+import AddInfoForm from '@/components/AddInfoForm'
 
 export default {
-    name: 'details',
+    name: 'add_info',
     components: {
         AppNavigation,
-        DetailsPage
+        AddInfoForm
     }
 }
 </script>
