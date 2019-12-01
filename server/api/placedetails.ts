@@ -1,7 +1,9 @@
 import axios from "axios";
 import Axios from "axios";
+import authMiddleware from '../auth-middleware';
 
 const router = require('express').Router();
+router.use(authMiddleware());
 
 router.get("/place", async (req, res)=>{
     //get gmaps url from string

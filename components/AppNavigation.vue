@@ -4,7 +4,7 @@
             v-model= "drawer"
             light
             absolute
-            temporary            
+            temporary
         >
             <v-divider></v-divider>
 
@@ -15,7 +15,7 @@
                 tile
             >
                 <v-card-title class= "headline font-weight-medium">
-                    Hi, User!
+                    Hi, {{ $store.state.name }}!
                 </v-card-title>
                 <v-icon>mdi-account-circle</v-icon>
             </v-card>
@@ -32,7 +32,7 @@
                         </v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
-            </v-list>    
+            </v-list>
         </v-navigation-drawer>
         <v-app-bar
             elevate-on-scroll
@@ -44,14 +44,14 @@
                 @click.stop="drawer = !drawer"
             ></v-app-bar-nav-icon><v-spacer></v-spacer>
             <v-toolbar-title class= "font-weight-bold"  >{{ appTitle }}</v-toolbar-title>
-            
+
             <v-spacer></v-spacer>
-            <v-btn 
+            <v-btn
                 flat
                 class=""
                 text
             >sign in</v-btn>
-            <v-btn 
+            <v-btn
                 flat
                 color="teal darken-4"
                 disabled=""

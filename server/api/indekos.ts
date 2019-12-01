@@ -1,6 +1,8 @@
 import Axios from "axios";
+import authMiddleware from '../auth-middleware';
 
 const router = require('express').Router();
+router.use(authMiddleware());
 
 interface RequestBody {
     //Todo Request Body attributes
@@ -31,7 +33,7 @@ router.get("/info", async (req, res) => {
 })
 
 router.get("/info/:id", async (req, res)=>{
-    const url = 'https://indekos.api.indekos.xyz/info?id=' + req.params.id;    
+    const url = 'https://indekos.api.indekos.xyz/info?id=' + req.params.id;
     const response = await Axios.get(url);
     const resp = response.data;
     var objResp = resp.map(function(x){
@@ -57,7 +59,7 @@ router.get("/info/:id", async (req, res)=>{
 router.post("/info", async (req,res) => {
     const url = "https://indekos.api.indekos.xyz/info"
     Axios.post(url, req.body)
-               .then(response => { 
+               .then(response => {
                    res.send(response.data)
                })
                .catch(e => {
