@@ -1,8 +1,5 @@
 import Axios from "axios";
-import authMiddleware from '../auth-middleware';
-
 const router = require('express').Router();
-router.use(authMiddleware());
 
 const indekosApiUrl = process.env.INDEKOS_API_BASE_URL || "https://indekos.api.indekos.xyz"
 
